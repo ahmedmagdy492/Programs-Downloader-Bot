@@ -34,5 +34,17 @@ namespace Programs_Downloader_Bot.Properties {
                 this["DownloadSavePath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("30/10/2022")]
+        public string LastDownloadDate {
+            get {
+                return ((string)(this["LastDownloadDate"]));
+            }
+            set {
+                this["LastDownloadDate"] = value;
+            }
+        }
     }
 }

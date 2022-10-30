@@ -39,13 +39,21 @@ namespace Programs_Downloader_Bot
 
         private async void Form1_Load(object sender, EventArgs e)
         {
-            if(string.IsNullOrWhiteSpace(Properties.Resources.DownloadSavePath))
+            if(string.IsNullOrWhiteSpace(Properties.Settings.Default.DownloadSavePath))
             {
                 Properties.Settings.Default.DownloadSavePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 Properties.Settings.Default.Save();
             }
 
+            if (string.IsNullOrWhiteSpace(Properties.Settings.Default.LastDownloadDate))
+            {
+                Properties.Settings.Default.LastDownloadDate = DateTime.Now.ToString("dd/MM/yyyy");
+                Properties.Settings.Default.Save();
+            }
+
             dataGridView1.DataSource = await installProgramRepo.GetPrograms();
+
+
         }
 
         private void btnInstallSelected_Click(object sender, EventArgs e)
